@@ -3,23 +3,32 @@
     windows_subsystem = "windows"
 )]
 
-use tauri_plugin_log::{LogTarget, LoggerBuilder};
+#[macro_use]
+extern crate log;
+extern crate diesel;
+extern crate diesel_migrations;
+extern crate dotenv;
 
-
-// Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-#[tauri::command]
-fn greet(name: &str) -> String {
-    format!("Hello, {}! You've been greeted from Rust!", name)
-}
+use tauri_plugin_log::{fern::colors::ColoredLevelConfig, LogTarget, LoggerBuilder};
+mod repository;
+use repository::migration::apply_migrations;
 
 fn main() {
-    tauri::Builder::default()
-        .plugin(LoggerBuilder::default().targets([
-            LogTarget::LogDir,
-            LogTarget::Stdout,
-            LogTarget::Webview,
-        ]).build())
-        .invoke_handler(tauri::generate_handler![greet])
-        .run(tauri::generate_context!())
-        .expect("error while running tauri application");
+
+  let targets = [LogTarget::LogDir, LogTarget::Stdout, LogTarget::Webview];
+  let colors = ColoredLevelConfig::default();
+
+  tauri::Builder::default()
+    .setup(|app| {
+      apply_migrations();
+      Ok(())
+    })
+    .plugin(
+      LoggerBuilder::new()
+        .with_colors(colors)
+        .targets(targets)
+        .build(),
+    )
+    .run(tauri::generate_context!())
+    .expect("error while running cronos-desktop application");
 }
