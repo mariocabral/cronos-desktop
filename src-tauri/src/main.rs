@@ -3,7 +3,6 @@
     windows_subsystem = "windows"
 )]
 
-#[macro_use]
 extern crate log;
 extern crate diesel;
 extern crate diesel_migrations;
@@ -19,7 +18,7 @@ fn main() {
   let colors = ColoredLevelConfig::default();
 
   tauri::Builder::default()
-    .setup(|app| {
+    .setup(|_app| {
       apply_migrations();
       Ok(())
     })
