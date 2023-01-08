@@ -1,23 +1,33 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
 import { trace, info, error, attachConsole } from 'tauri-plugin-log-api'
+import {ProfesionalService} from "./services/ProfesionalService";
 
 const detach = await attachConsole()
 
-function App() {
+const App: React.FC = () => {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
+  const profesionalService = new ProfesionalService();
 
   async function greet() {
     // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
     setGreetMsg(await invoke("greet", { name }));
+    
   }
+
+ async function addProfesional()  {
+  info("Add profesional")
+  profesionalService.storeNewProfesional();
+ }
+
+
   // with LogTarget::Webview enabled this function will print logs to the browser console
-  trace("Trace")
-  info("Info")
-  error("Error")
+  //trace("Trace example")
+  //info("Info example")
+  //error("Error example")
 
   // detach the browser console from the log stream
   detach()
@@ -49,6 +59,9 @@ function App() {
           />
           <button type="button" onClick={() => greet()}>
             Greet
+          </button>
+          <button type="button" onClick={() => addProfesional()}>
+            Add profesional
           </button>
         </div>
       </div>
