@@ -3,14 +3,18 @@
     windows_subsystem = "windows"
 )]
 
-extern crate log;
+#[macro_use]
 extern crate diesel;
 extern crate diesel_migrations;
+extern crate log;
 extern crate dotenv;
+extern crate chrono;
+
 
 use tauri_plugin_log::{fern::colors::ColoredLevelConfig, LogTarget, LoggerBuilder};
 mod repository;
 use repository::migration::apply_migrations;
+mod api;
 
 fn main() {
 
@@ -28,6 +32,9 @@ fn main() {
         .targets(targets)
         .build(),
     )
+    .invoke_handler(tauri::generate_handler![
+      api::commands::profesional::create_profesional
+    ])
     .run(tauri::generate_context!())
     .expect("error while running cronos-desktop application");
 }
