@@ -55,7 +55,7 @@ pub fn convert_to_profesional(profesional: &ProfesionalsEntity, phones: &Vec<Pro
         phones: phones.iter()
             .map(|p| ProfesionalsPhones { 
                 id: Some(p.id.clone()), 
-                profesional_id: p.profesional_id.clone(), 
+                profesional_id: Some(p.profesional_id.clone()), 
                 phone: p.phone.clone(), 
                 enabled: p.enabled, 
                 created_at: parse_time_to_string(&p.created_at), 
