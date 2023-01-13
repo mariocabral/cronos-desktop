@@ -1,10 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "./style.css";
+import { Provider } from 'react-redux';
+import { store } from './state/Store';
+import "./i18n/i18n";
+import "@fontsource/amaranth"
+
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+        <App />
+    </Provider>
   </React.StrictMode>
 );
+
+
