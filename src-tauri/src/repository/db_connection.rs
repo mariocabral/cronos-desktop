@@ -2,8 +2,9 @@ use diesel::prelude::*;
 use std::path;
 use dotenv::dotenv;
 use std::env;
-use log::info;
-use log::warn;
+use log::{info, warn, error};
+use std::fs;
+
 
 pub fn establish_connection() -> SqliteConnection {
     dotenv().ok();
@@ -20,6 +21,16 @@ pub fn establish_connection() -> SqliteConnection {
       Err(_) => {
         warn!("no CRONOS_ENV");
   
+        let create_dir = fs::create_dir_all(path::Path::new(&tauri::api::path::home_dir().unwrap()).join(".cronos-desktop"));
+        match create_dir {
+          Ok(_) => {
+            info!("Create app directory succesfully");
+          }
+          Err(_) => {
+            error!("Fail create app directory");
+          }
+        }
+
         let database_url = path::Path::new(&tauri::api::path::home_dir().unwrap())
           .join(".cronos-desktop")
           .join("cronos.db");
