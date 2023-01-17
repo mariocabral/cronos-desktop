@@ -1,72 +1,44 @@
-import React, { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/tauri";
+import React, { Suspense } from 'react';
 import "./App.css";
-import { trace, info, error, attachConsole } from 'tauri-plugin-log-api'
-import {ProfesionalService} from "./services/ProfesionalService";
+import { info, attachConsole } from 'tauri-plugin-log-api';
+import AppSidebar from './components/AppSidebar';
+import AppHeader from './components/AppHeader';
+import AppFooter from './components/AppFooter';
+import AppContent from './components/AppContent';
+import { ThemeConfig } from "./theme";
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Stack } from '@mui/material';
+
 
 const detach = await attachConsole()
 
 const App: React.FC = () => {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-  const profesionalService = new ProfesionalService();
 
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-    
-  }
-
- async function addProfesional()  {
-  info("Add profesional")
-  profesionalService.storeNewProfesional();
- }
-
-
-  // with LogTarget::Webview enabled this function will print logs to the browser console
-  //trace("Trace example")
-  //info("Info example")
-  //error("Error example")
-
-  // detach the browser console from the log stream
-  detach()
+  info("Info");
+  detach();
+  const loading = (
+    <div className="pt-3 text-center">
+      <div className="sk-spinner sk-spinner-pulse"></div>
+    </div>
+  )
 
   return (
-    <div className="container">
-      <h1>Welcome to Tauri!</h1>
-
-      <div className="row">
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
-      <div className="row">
-        <div>
-          <input
-            id="greet-input"
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder="Enter a name..."
-          />
-          <button type="button" onClick={() => greet()}>
-            Greet
-          </button>
-          <button type="button" onClick={() => addProfesional()}>
-            Add profesional
-          </button>
+      <ThemeConfig>
+        <HashRouter>
+        <div className="app">
+          <AppSidebar />  
+          <Stack direction="column" justifyContent="space-between" alignItems="stretch" spacing={0.5} sx={{ width: '100%' }}>
+            <AppHeader/>
+            <Suspense fallback={loading}>
+              <Routes>
+                <Route path="*"  element={<AppContent />} />
+              </Routes>
+            </Suspense>
+            <AppFooter />
+            </Stack>
         </div>
-      </div>
-      <p>{greetMsg}</p>
-    </div>
+        </HashRouter>
+      </ThemeConfig>
   );
 }
 
