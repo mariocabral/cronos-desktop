@@ -1,18 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { Box } from "@mui/material";
+import i18next from '../i18n/i18n';
+import moment from 'moment';
+import 'moment/dist/locale/es';
+
 
 const AppFooter: React.FC = () => {
+  
+  const [currentTime, setCurrentTime] = useState('');
+
+  setInterval(() => {
+    var localLocale = moment();
+    localLocale.locale(i18next.language);
+    setCurrentTime(localLocale.format('LLLL'));
+  }, 2000);
+
   return (
-    <div>
-      <div>
-        <span className="ms-1">&copy; 2022</span>
-      </div>
-      <div className="ms-auto">
-        <span className="me-1">Powered by</span>
-        <a href="https://coreui.io/react" target="_blank" rel="noopener noreferrer">
-          CoreUI React Admin &amp; Dashboard Template
-        </a>
-      </div>
-    </div>
+    <Box display="flex" justifyContent="space-between" p={2}>
+      <div></div>
+      {currentTime}
+    </Box>
   )
 }
 

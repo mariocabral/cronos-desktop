@@ -2,12 +2,15 @@ import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import enTranslate from './en/en.json';
 import esTranslate from './es/es.json';
-
+import moment from 'moment';
+import 'moment/dist/locale/es';
 
 export enum Languages {
     en = "en", 
     es = "es"
 }
+
+moment.locale(['en', 'es']);
 
 // the translations
 // (tip move them in a JSON file and import them,
