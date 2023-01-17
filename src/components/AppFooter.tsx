@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Box } from "@mui/material";
 import i18next from '../i18n/i18n';
 import moment from 'moment';
-import 'moment/dist/locale/es';
-
 
 const AppFooter: React.FC = () => {
   

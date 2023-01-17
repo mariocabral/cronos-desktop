@@ -14,6 +14,7 @@ export enum ComponentItemType {
 export interface NavigationRouteItem {
   type: ComponentItemType,
   title: string,
+  name: string,
   path?: string,
   icon?: any,
   element?: any
@@ -23,17 +24,20 @@ export const navegationItems: Array<NavigationRouteItem> = [
   {
     type: ComponentItemType.access,
     title:"sidebar.dashboard",
-    path:"/",
+    name: "dashboard",
+    path:"/dashboard",
     icon:<HomeOutlinedIcon/>,
     element: Dashboard
   },
   {
     type: ComponentItemType.title,
     title:"sidebar.admin.title",
+    name: "title",
   },
   {
     type: ComponentItemType.access,
     title:"sidebar.admin.profesional",
+    name: "profesionals",
     path:"/profesionals",
     icon:<PeopleOutlinedIcon/>,
     element: Profesionals 

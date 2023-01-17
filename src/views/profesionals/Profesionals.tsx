@@ -7,9 +7,9 @@ import { useTranslation } from "react-i18next";
 
 const Profesionals: React.FC = () => {
   return (
-    <>
-      TBD
-    </>
+    <div>
+      TBD Profesionals
+    </div>
   )
 }
 

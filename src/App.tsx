@@ -6,7 +6,8 @@ import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import AppContent from './components/AppContent';
 import { ThemeConfig } from "./theme";
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import { Stack } from '@mui/material';
 
 
 const detach = await attachConsole()
@@ -25,14 +26,16 @@ const App: React.FC = () => {
       <ThemeConfig>
         <HashRouter>
         <div className="app">
-          <AppSidebar />
-          <main className="content">
+          <AppSidebar />  
+          <Stack direction="column" justifyContent="space-between" alignItems="stretch" spacing={0.5} sx={{ width: '100%' }}>
             <AppHeader/>
             <Suspense fallback={loading}>
-              <AppContent />
+              <Routes>
+                <Route path="*"  element={<AppContent />} />
+              </Routes>
             </Suspense>
             <AppFooter />
-          </main>
+            </Stack>
         </div>
         </HashRouter>
       </ThemeConfig>
