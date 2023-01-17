@@ -1,5 +1,7 @@
 {
     "sidebar": {
+        "title": "Cronos Med",
+        "description": "Aplicaci[on para la gestion de turnos",
         "dashboard": "Panel General",
         "schedule": {
             "title": "Calendario",

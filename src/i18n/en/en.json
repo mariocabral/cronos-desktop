@@ -1,5 +1,7 @@
 {
     "sidebar": {
+        "title": "Cronos Med",
+        "description": "App to appointments managements",
         "dashboard": "Dashboard",
         "schedule": {
             "title": "Schedule",

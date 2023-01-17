@@ -1,19 +1,18 @@
 import React, { Suspense } from 'react';
 import "./App.css";
-import { info, attachConsole } from 'tauri-plugin-log-api'
-import { ProSidebarProvider } from 'react-pro-sidebar';
-import { HashRouter } from 'react-router-dom';
+import { info, attachConsole } from 'tauri-plugin-log-api';
 import AppSidebar from './components/AppSidebar';
 import AppHeader from './components/AppHeader';
 import AppFooter from './components/AppFooter';
 import AppContent from './components/AppContent';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Grid2 from '@mui/material/Unstable_Grid2'; 
+import { ThemeConfig } from "./theme";
+import { HashRouter } from 'react-router-dom';
+
 
 const detach = await attachConsole()
 
 const App: React.FC = () => {
+
   info("Info");
   detach();
   const loading = (
@@ -23,21 +22,20 @@ const App: React.FC = () => {
   )
 
   return (
-    <ProSidebarProvider>
-      <CssBaseline />
-      <HashRouter>
-        <Suspense fallback={loading}>
-          <div className="app">
-            <AppSidebar /> 
-            <main className="content">
-              <AppHeader />
+      <ThemeConfig>
+        <HashRouter>
+        <div className="app">
+          <AppSidebar />
+          <main className="content">
+            <AppHeader/>
+            <Suspense fallback={loading}>
               <AppContent />
-              <AppFooter />
-            </main>
-          </div>
-        </Suspense>
-      </HashRouter>
-    </ProSidebarProvider>
+            </Suspense>
+            <AppFooter />
+          </main>
+        </div>
+        </HashRouter>
+      </ThemeConfig>
   );
 }
 
