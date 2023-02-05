@@ -18,6 +18,7 @@
     "@mui/material": "^5.11.4",
     "@mui/system": "^5.11.4",
     "@mui/utils": "^5.11.2",
+    "@mui/x-data-grid": "^5.17.19",
     "@reduxjs/toolkit": "^1.9.1",
     "@tabler/icons": "^1.119.0",
     "@tauri-apps/api": "^1.2.0",

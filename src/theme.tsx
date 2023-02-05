@@ -10,7 +10,6 @@ type ThemeProp = {
   children: JSX.Element;
 };
 
-
 // color design tokens export
 export const tokens = (mode: ThemeContextType) => ({
   ...(mode === ThemeContextType.dark

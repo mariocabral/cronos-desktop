@@ -30,14 +30,22 @@
         "setting": "Setting"
     },
     "views": {
+        "commons": {
+            "table": {
+                "empty": "No Rows"
+            }
+        },
         "profesional": {
             "title": "Profesional Management",
+            "subtitle": "",
             "profesional_count" : "Total profesionals",
             "search": "Search",
             "table": {
                 "name": "Name",
+                "degree": "Degree",
                 "licence": "Licence",
-                "phones" : "Phone"
+                "phones" : "Phone",
+                "email":"E-Mail"
             },
             "modal":{
                 "title" : {

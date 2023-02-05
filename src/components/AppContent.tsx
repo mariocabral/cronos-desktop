@@ -9,8 +9,7 @@ import { Box, Container } from '@mui/material';
 const AppContent: React.FC = () => {
 
   return (
-    <Container  maxWidth="sm" >
-      <Box display="fixed" >
+    <div >
         <Suspense fallback={<IconFidgetSpinner color="primary" />}>
           <Routes>
             {navegationItems
@@ -29,9 +28,7 @@ const AppContent: React.FC = () => {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Routes>
         </Suspense>
-      </Box>
-    </Container>
-    
+    </div>
   )
 }
 
