@@ -12,6 +12,8 @@ const Profesionals = React.lazy(() => import('./views/profesionals/Profesionals'
 const Rooms = React.lazy(() => import('./views/rooms/Rooms'))
 const Customers = React.lazy(() => import('./views/customers/Customers'))
 const Healtcare = React.lazy(() => import('./views/healtcare/Healtcare'))
+const Appointments = React.lazy(() => import('./views/appointments/Appointments'))
+
 
 export enum ComponentItemType {
   title,
@@ -47,7 +49,7 @@ export const navegationItems: Array<NavigationRouteItem> = [
     name: "appointments",
     path:"/appointments",
     icon:<CalendarMonthOutlinedIcon/>,
-    element: Profesionals 
+    element: Appointments 
   },
   {
     type: ComponentItemType.title,

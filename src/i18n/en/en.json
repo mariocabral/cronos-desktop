@@ -1,4 +1,5 @@
 {
+    "languaje": "en",
     "sidebar": {
         "title": "Cronos Med",
         "description": "App to appointments managements",
@@ -71,5 +72,8 @@
                 "delete_description": "The profesional {{lastName}}, {{firstName}} will be delete."
             }
         }
+    },
+    "calendar": {
+        "en": null
     }
 }
