@@ -14,111 +14,9 @@ import enUS from 'date-fns/locale/en-US';
 import es from 'date-fns/locale/es';
 import addHours from 'date-fns/addHours';
 import startOfHour from 'date-fns/startOfHour';
-
-
-
-
-const Appointments: React.FC = () => {
-  const theme = useTheme();
-  const colors = tokens(ThemeContextType[theme.palette.mode]);
-  const {t} = useTranslation();
-  const culture = t('languaje');
-  const lang = {
-    week: t('calendar.week'),
-    work_week: t('calendar.work_week'),
-    day: t('calendar.day'),
-    month: t('calendar.month'),
-    previous: t('calendar.previous'),
-    next: t('calendar.next'),
-    today: t('calendar.today'),
-    agenda: t('calendar.agenda'),
-  };
-
-  const [currentEvents, setCurrentEvents] = useState([]);
-  const [events, setEvents] = useState<Event[]>([
-    {
-      title: 'Learn cool stuff',
-      start,
-      end,
-    },
-  ])
-
-  const onEventResize: withDragAndDropProps['onEventResize'] = data => {
-    const { start, end } = data
-
-    setEvents(currentEvents => {
-      const firstEvent = {
-        start: new Date(start),
-        end: new Date(end),
-      }
-      return [...currentEvents, firstEvent]
-    })
-  }
-
-  const onEventDrop: withDragAndDropProps['onEventDrop'] = data => {
-    console.log(data)
-  }
-
-  return (
-    <Box m="20px" >
-      <Header title={t('views.appointments.title')} subtitle={t('views.appointments.subtitle')}></Header>
-      <Box display="flex" justifyContent="space-between">
-        {/* CALENDAR SIDEBAR */}
-        <Box
-          flex="1 1 20%"
-          backgroundColor={colors.primary[400]}
-          p="15px"
-          borderRadius="4px"
-        >
-          <Typography variant="h5">Events</Typography>
-          <List>
-            {currentEvents.map((event) => (
-              <ListItem
-                key={event.id}
-                sx={{
-                  backgroundColor: colors.greenAccent[500],
-                  margin: "10px 0",
-                  borderRadius: "2px",
-                }}
-              >
-                <ListItemText
-                  primary={event.title}
-                  secondary={
-                    <Typography>
-                      date
-                      
-                    </Typography>
-                  }
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-
-        {/* CALENDAR */}
-        <Box flex="1 1 100%" ml="15px">
-        <div >
-    
-        <DnDCalendar
-          views={['week', 'day', 'agenda']}
-          messages={lang}
-          culture={culture}
-          defaultView='day'
-          events={events}
-          localizer={localizer}
-          onEventDrop={onEventDrop}
-          onEventResize={onEventResize}
-          resizable
-          min={new Date(0, 0, 0, 8, 0, 0)}
-          max={new Date(0, 0, 0, 20, 0, 0)}
-        />
-
-        </div>
-        </Box>
-      </Box>
-    </Box>
-  )
-}
+import { useAppDispatch, useAppSelector } from '../../state/hooks';
+import { selectAppointement, updateAppointementsList } from '../../state/reducers/appointmentReducer';
+import { Appointement } from '../../bindings/Appointement';
 
 const locales = {
   'en-US': enUS,
@@ -138,5 +36,88 @@ const localizer = dateFnsLocalizer({
 })
 //@ts-ignore
 const DnDCalendar = withDragAndDrop(BigCalendar)
+
+const Appointments: React.FC = () => {
+  const theme = useTheme();
+  const colors = tokens(ThemeContextType[theme.palette.mode]);
+  const {t} = useTranslation();
+  const culture = t('languaje');
+  const lang = {
+    week: t('calendar.week'),
+    work_week: t('calendar.work_week'),
+    day: t('calendar.day'),
+    month: t('calendar.month'),
+    previous: t('calendar.previous'),
+    next: t('calendar.next'),
+    today: t('calendar.today'),
+    agenda: t('calendar.agenda'),
+  };
+  const dispatch = useAppDispatch();
+  const appointmentState = useAppSelector(selectAppointement);
+
+  const onEventResize: withDragAndDropProps['onEventResize'] = data => {
+    console.log(data)
+  }
+
+  const onEventDrop: withDragAndDropProps['onEventDrop'] = data => {
+    console.log(data)
+  }
+
+  return (
+    <Box m="20px" >
+      <Header title={t('views.appointments.title')} subtitle={t('views.appointments.subtitle')}></Header>
+      <Box display="flex" justifyContent="space-between">
+        {/* CALENDAR SIDEBAR */}
+        <Box flex="1 1 20%" backgroundColor={colors.primary[400]} p="15px" borderRadius="4px" >
+          <Typography variant="h5">Events</Typography>
+          <List>
+            {appointmentState.appointements.map((event: Appointement) => (
+              <ListItem
+                key={event.appointmentId}
+                sx={{
+                  backgroundColor: colors.greenAccent[500],
+                  margin: "10px 0",
+                  borderRadius: "2px",
+                }}
+              >
+                <ListItemText
+                  primary={event.title}
+                  secondary={
+                    <Typography>
+                      date
+                    </Typography>
+                  }
+                />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+
+        {/* CALENDAR */}
+        <Box flex="1 1 100%" ml="15px">
+        <div >
+    
+        <DnDCalendar
+          views={['week', 'day', 'agenda']}
+          messages={lang}
+          culture={culture}
+          defaultView='day'
+          events={appointmentState.events}
+          localizer={localizer}
+          onEventDrop={onEventDrop}
+          onEventResize={onEventResize}
+          resizable
+          min={new Date(0, 0, 0, 8, 0, 0)}
+          max={new Date(0, 0, 0, 20, 0, 0)}
+        />
+
+        </div>
+        </Box>
+      </Box>
+    </Box>
+  )
+}
+
+
 
 export default Appointments
