@@ -1,6 +1,13 @@
 import {v4 as uuidv4} from 'uuid';
 import moment, { Moment } from "moment";
 
+function randomIntFromInterval(min: number, max: number) { // min and max included 
+  return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+const initEvent1 = randomIntFromInterval(1, 6)
+const initEvent2 = randomIntFromInterval(1, 6)
+
 const mockDataAppointments = [
     {
       id: 1,
@@ -15,8 +22,8 @@ const mockDataAppointments = [
       healtcareId: uuidv4(),
       healtcareName: 'particular',
       notes: 'El cliente es un joven menor de edad\nllega con la madre',
-      appointmentStart: moment().add(-12, 'hours').toDate(),
-      appointmentEnd: moment().add(-11, 'hours').toDate(),
+      appointmentStart: moment().set('hours', 8 + initEvent1).toDate(),
+      appointmentEnd: moment().set('hours', 8 + initEvent1).add(1, 'hours').toDate(),
       enabled: true,
     },
     {
@@ -32,8 +39,8 @@ const mockDataAppointments = [
       healtcareId: uuidv4(),
       healtcareName: 'particular',
       notes: 'El cliente es un joven menor de edad\nllega con la madre',
-      appointmentStart: moment().add(-13, 'hours').toDate(),
-      appointmentEnd: moment().add(-7, 'hours').toDate(),
+      appointmentStart: moment().set('hours', 8 + initEvent2).toDate(),
+      appointmentEnd: moment().set('hours', 8 + initEvent2).add(2, 'hours').toDate(),
       enabled: true,
     }
   ];

@@ -34,6 +34,19 @@ export const appointementSlice = createSlice({
           return event;
         });
       },
+      addAppointements: (state, action: PayloadAction<Appointement>) => {
+        state.appointements.push(action.payload);
+        state.events = state.appointements.map((a:Appointement) => {
+            const event:Event = {
+            allDay: false,
+            title: a.title,
+            start: a.appointmentStart,
+            end: a.appointmentEnd,
+            resource: undefined
+          };
+          return event;
+        });
+      },
       setCurrentAppointement: (state, action: PayloadAction<Appointement | undefined>) => {
         state.currentAppointement = action.payload;
       },
@@ -61,7 +74,8 @@ export const appointementSlice = createSlice({
                  showAppointementDeleteModal, 
                  setCurrentAppointement, 
                  setModalOperation, 
-                 updateSearch 
+                 updateSearch,
+                 addAppointements
                 } = appointementSlice.actions;
 
   // The function below is called a selector and allows us to select a value from

@@ -15,8 +15,11 @@ import es from 'date-fns/locale/es';
 import addHours from 'date-fns/addHours';
 import startOfHour from 'date-fns/startOfHour';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-import { selectAppointement, updateAppointementsList } from '../../state/reducers/appointmentReducer';
+import { selectAppointement, showAppointementModal, setModalOperation, setCurrentAppointement } from '../../state/reducers/appointmentReducer';
 import { Appointement } from '../../bindings/Appointement';
+import { Operations } from '../../state/models/AppointmentState';
+import AppointmentsModal from './AppointmentsModal';
+import moment from 'moment';
 
 const locales = {
   'en-US': enUS,
@@ -56,19 +59,39 @@ const Appointments: React.FC = () => {
   const appointmentState = useAppSelector(selectAppointement);
 
   const onEventResize: withDragAndDropProps['onEventResize'] = data => {
-    console.log(data)
+    console.log(data);
   }
 
   const onEventDrop: withDragAndDropProps['onEventDrop'] = data => {
-    console.log(data)
+    console.log(data);
   }
+
+  const handleSelectSlot = ({ start, end } : Event) => {
+    console.log(`New appointment. start=${start} and end=${end}`);
+    dispatch(setModalOperation(Operations.ADD_APPOINTMENT));
+    dispatch(setCurrentAppointement({
+      title: null,
+      profesionalId: null,
+      profesionalName: null,
+      customerId: null,
+      customerName: null,
+      roomId: null,
+      roomName: null,
+      healtcareId: null,
+      healtcareName: null,
+      appointmentStart: start ?? moment().toDate() ,
+      appointmentEnd: end ?? moment().add(1, 'hours').toDate(),
+      enabled: true,
+    }));
+    dispatch(showAppointementModal(true));
+  };
 
   return (
     <Box m="20px" >
       <Header title={t('views.appointments.title')} subtitle={t('views.appointments.subtitle')}></Header>
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR SIDEBAR */}
-        <Box flex="1 1 20%" backgroundColor={colors.primary[400]} p="15px" borderRadius="4px" >
+        <Box flex="1 1 20%" p="15px" borderRadius="4px" sx={{ backgroundColor: colors.primary[400] }}>
           <Typography variant="h5">Events</Typography>
           <List>
             {appointmentState.appointements.map((event: Appointement) => (
@@ -106,7 +129,9 @@ const Appointments: React.FC = () => {
           localizer={localizer}
           onEventDrop={onEventDrop}
           onEventResize={onEventResize}
+          onSelectSlot={handleSelectSlot}
           resizable
+          selectable
           min={new Date(0, 0, 0, 8, 0, 0)}
           max={new Date(0, 0, 0, 20, 0, 0)}
         />
@@ -114,6 +139,7 @@ const Appointments: React.FC = () => {
         </div>
         </Box>
       </Box>
+      <AppointmentsModal></AppointmentsModal>
     </Box>
   )
 }

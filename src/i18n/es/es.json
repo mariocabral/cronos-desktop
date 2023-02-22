@@ -172,15 +172,23 @@
 			},
 			"modal": {
 				"title": {
-					"add": "Agregar un paciente",
+					"add": "Agregar un nuevo turno",
 					"delete": "Eliminar datos de un paciente",
 					"edit": "Editar los datos de un paciente",
 					"show": "Mostrar los datos de un paciente"
 				},
 				"form": {
-					"name": "Nombre",
+					"title": "Agregar Titulo",
+					"customer": "Agregar cliente",
+					"repeat": "Repetir evento",
+					"profesional": "Agregar Profesional",
+					"healtCare": "Agregar Mutual",
+					"rooms": "Agregar Sala de Consulta",
 					"description": "Descripción",
 					"descriptionText": "El texto no debe superar los 300 caracteres.",
+					"day": "Día",
+					"from":"Desde",
+					"to":"Hasta",
 					"enable": "Habilitar",
 					"submit": "Guardar",
 					"close": "Cerrar",
@@ -188,6 +196,14 @@
 					"delete": "Borrar"
 				},
 				"deleteDescription": "El paciente '{{name}}' sera eliminada del sistema."
+			},
+			"repeatModes": {
+				"notRepeat" : "no repetir",
+				"wekday" : "todos los dias de la semana (Lunes-Viernes)",
+				"daily" : "diario",
+				"weekly" : "semanalmente",
+				"monthly" : "mensaualmente",
+				"yearly" : "anualmente"
 			}
 		}
 	},

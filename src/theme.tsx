@@ -205,7 +205,7 @@ export const themeSettings = (mode: ThemeContextType) => {
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeConfig: React.FC<ThemeProp> = ({ children }) => {
-  const [mode, setMode] = useState(ThemeContextType.dark);
+  const [mode, setMode] = useState(ThemeContextType.light);
 
   const colorMode = useMemo(
     () => ({
