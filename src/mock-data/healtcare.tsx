@@ -32,7 +32,18 @@ const mockDataHealtcare = [
       ],
       profesionals: ["Cersei Lannister", "Anya Stark"],
       customers: ["Cersei Lannister", "Anya Stark"]
-    }
+    },
+    {
+      id: 4,
+      healtcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
+      name: "Particular",
+      phone: [
+        "(665)121-5454",
+        "(665)121-5454"
+      ],
+      profesionals: ["Cersei Lannister", "Anya Stark"],
+      customers: ["Cersei Lannister", "Anya Stark"]
+    },
   ];
   
 export default mockDataHealtcare;

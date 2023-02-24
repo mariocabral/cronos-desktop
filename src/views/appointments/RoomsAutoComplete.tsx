@@ -7,6 +7,7 @@ import { RoomsService } from '../../services/RoomsService';
   
 interface RoomsAutoCompleteProps {
   onChange: (newValue: RoomsItem | null) => void;
+  value: RoomsItem | null;
 }
 
 export interface RoomsItem {
@@ -14,7 +15,7 @@ export interface RoomsItem {
   id: string
 }
 
-const RoomsAutoComplete = ({onChange}: RoomsAutoCompleteProps) => {
+const RoomsAutoComplete = ({onChange, value}: RoomsAutoCompleteProps) => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const [open, setOpen] = React.useState(false);
@@ -67,6 +68,7 @@ const RoomsAutoComplete = ({onChange}: RoomsAutoCompleteProps) => {
       onChange={(event: React.SyntheticEvent, newValue: RoomsItem | null) => {
         setValue(newValue);
       }}
+      value={value}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
       options={roomsOptions}

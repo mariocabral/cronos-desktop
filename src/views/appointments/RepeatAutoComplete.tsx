@@ -1,9 +1,7 @@
 import React from 'react';
 import { Autocomplete, TextField, CircularProgress, useTheme } from "@mui/material";
 import { tokens, ThemeContextType } from "../../theme";
-import { SvgIconComponent } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
-import { CustomerService } from '../../services/CustomerService';
   
 interface CustomerAutoCompleteProps {
   onChange: (newValue: string ) => void;
@@ -17,10 +15,10 @@ const RepeatAutoComplete = ({onChange}: CustomerAutoCompleteProps) => {
   const loading = open && options.length === 0;
   const {t} = useTranslation();
   const label = t('views.appointments.modal.form.repeat');
-  const customerService = new CustomerService();
+  const defaultValue = t('views.appointments.repeatModes.notRepeat');
 
   const setValue = (newValue: string | null) => {
-    onChange(newValue ? newValue : t('views.appointments.repeatModes.notRepeat'));
+    onChange(newValue ? newValue : defaultValue);
   };
 
   React.useEffect(() => {
@@ -68,6 +66,7 @@ const RepeatAutoComplete = ({onChange}: CustomerAutoCompleteProps) => {
       onChange={(event: React.SyntheticEvent, newValue: string | null) => {
         setValue(newValue);
       }}
+      value={defaultValue}
       isOptionEqualToValue={(option, value) => option === value}
       options={options}
       loading={loading}

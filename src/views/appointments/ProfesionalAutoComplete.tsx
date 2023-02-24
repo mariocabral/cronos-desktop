@@ -7,6 +7,7 @@ import { ProfesionalService } from '../../services/ProfesionalService';
   
 interface ProfesionalAutoCompleteProps {
   onChange: (newValue: ProfesionalItem | null) => void;
+  value: ProfesionalItem | null;
 }
 
 export interface ProfesionalItem {
@@ -14,7 +15,7 @@ export interface ProfesionalItem {
   id: string
 }
 
-const ProfesionalAutoComplete = ({onChange}: ProfesionalAutoCompleteProps) => {
+const ProfesionalAutoComplete = ({onChange, value}: ProfesionalAutoCompleteProps) => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const [open, setOpen] = React.useState(false);
@@ -67,6 +68,7 @@ const ProfesionalAutoComplete = ({onChange}: ProfesionalAutoCompleteProps) => {
       onChange={(event: React.SyntheticEvent, newValue: ProfesionalItem | null) => {
         setValue(newValue);
       }}
+      value={value}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
       options={profesionalOptions}

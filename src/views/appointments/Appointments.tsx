@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Box, useTheme, List,  ListItem,  ListItemText,  Typography, } from "@mui/material";
+import React from 'react';
+import { Box, useTheme } from "@mui/material";
 import { ThemeContextType, tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
 import Header from '../../components/Header';
@@ -16,10 +16,10 @@ import addHours from 'date-fns/addHours';
 import startOfHour from 'date-fns/startOfHour';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { selectAppointement, showAppointementModal, setModalOperation, setCurrentAppointement } from '../../state/reducers/appointmentReducer';
-import { Appointement } from '../../bindings/Appointement';
 import { Operations } from '../../state/models/AppointmentState';
 import AppointmentsModal from './AppointmentsModal';
 import moment from 'moment';
+import { AppointmentEvent } from '../../bindings/AppointmentEvent';
 
 const locales = {
   'en-US': enUS,
@@ -86,56 +86,38 @@ const Appointments: React.FC = () => {
     dispatch(showAppointementModal(true));
   };
 
+  const handleSelectEvent = (event: Object) => {
+    console.log(`Show appointment.${event}`);
+    const appointmentEvent = event as AppointmentEvent;
+    dispatch(setModalOperation(Operations.SHOW_APPOINTMENT));
+    dispatch(setCurrentAppointement(appointmentEvent.appointment));
+    dispatch(showAppointementModal(true));
+  };
+
   return (
     <Box m="20px" >
       <Header title={t('views.appointments.title')} subtitle={t('views.appointments.subtitle')}></Header>
       <Box display="flex" justifyContent="space-between">
-        {/* CALENDAR SIDEBAR */}
-        <Box flex="1 1 20%" p="15px" borderRadius="4px" sx={{ backgroundColor: colors.primary[400] }}>
-          <Typography variant="h5">Events</Typography>
-          <List>
-            {appointmentState.appointements.map((event: Appointement) => (
-              <ListItem
-                key={event.appointmentId}
-                sx={{
-                  backgroundColor: colors.greenAccent[500],
-                  margin: "10px 0",
-                  borderRadius: "2px",
-                }}
-              >
-                <ListItemText
-                  primary={event.title}
-                  secondary={
-                    <Typography>
-                      date
-                    </Typography>
-                  }
-                />
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-
         {/* CALENDAR */}
         <Box flex="1 1 100%" ml="15px">
         <div >
     
-        <DnDCalendar
-          views={['week', 'day', 'agenda']}
-          messages={lang}
-          culture={culture}
-          defaultView='day'
-          events={appointmentState.events}
-          localizer={localizer}
-          onEventDrop={onEventDrop}
-          onEventResize={onEventResize}
-          onSelectSlot={handleSelectSlot}
-          resizable
-          selectable
-          min={new Date(0, 0, 0, 8, 0, 0)}
-          max={new Date(0, 0, 0, 20, 0, 0)}
-        />
-
+          <DnDCalendar
+            views={['week', 'day', 'agenda']}
+            messages={lang}
+            culture={culture}
+            defaultView='day'
+            events={appointmentState.events}
+            localizer={localizer}
+            onEventDrop={onEventDrop}
+            onEventResize={onEventResize}
+            onSelectSlot={handleSelectSlot}
+            onSelectEvent={handleSelectEvent}
+            resizable
+            selectable
+            min={new Date(0, 0, 0, 8, 0, 0)}
+            max={new Date(0, 0, 0, 20, 0, 0)}
+          />
         </div>
         </Box>
       </Box>

@@ -7,6 +7,7 @@ import { HealtCareService } from '../../services/HealtCareService';
   
 interface HealtCareAutoCompleteProps {
   onChange: (newValue: HealtCareItem | null) => void;
+  value: HealtCareItem | null;
 }
 
 export interface HealtCareItem {
@@ -14,7 +15,7 @@ export interface HealtCareItem {
   id: string
 }
 
-const HealtCareAutoComplete = ({onChange}: HealtCareAutoCompleteProps) => {
+const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const [open, setOpen] = React.useState(false);
@@ -67,6 +68,7 @@ const HealtCareAutoComplete = ({onChange}: HealtCareAutoCompleteProps) => {
       onChange={(event: React.SyntheticEvent, newValue: HealtCareItem | null) => {
         setValue(newValue);
       }}
+      value={value}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
       options={healtCareOptions}

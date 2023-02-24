@@ -1,14 +1,14 @@
 
 import {Appointement} from '../../bindings/Appointement';
-import {Event} from 'react-big-calendar';
+import { AppointmentEvent } from '../../bindings/AppointmentEvent';
 
 export enum Operations {
-  NONE, ADD_APPOINTMENT, SHOW_APPOINTMENT, EDIT_APPOINTMENT, DELETE_APPOINTMENT
+  NONE, ADD_APPOINTMENT, SHOW_APPOINTMENT, DELETE_APPOINTMENT
 }
 
 export interface AppointementState {
     appointements: Array<Appointement>,
-    events: Array<Event>,
+    events: Array<AppointmentEvent>,
     currentAppointement?: Appointement,
     showAppointementModal: boolean,
     showAppointementDeleteModal: boolean,

@@ -2,8 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {Appointement} from '../../bindings/Appointement';
 import { AppointementState, Operations } from '../models/AppointmentState';
 import { RootState } from '../Store';
-import {Event} from 'react-big-calendar';
-
+import { AppointmentEvent } from '../../bindings/AppointmentEvent';
 
 const initialState: AppointementState = {
   appointements: new Array(),
@@ -24,12 +23,13 @@ export const appointementSlice = createSlice({
       updateAppointementsList: (state, action: PayloadAction<Array<Appointement>>) => {
         state.appointements = action.payload;
         state.events = state.appointements.map((a:Appointement) => {
-            const event:Event = {
-            allDay: false,
-            title: a.title,
-            start: a.appointmentStart,
-            end: a.appointmentEnd,
-            resource: undefined
+            const event:AppointmentEvent = {
+              appointment: a,
+              allDay: false,
+              title: a.title,
+              start: a.appointmentStart,
+              end: a.appointmentEnd,
+              resource: undefined
           };
           return event;
         });
@@ -37,15 +37,19 @@ export const appointementSlice = createSlice({
       addAppointements: (state, action: PayloadAction<Appointement>) => {
         state.appointements.push(action.payload);
         state.events = state.appointements.map((a:Appointement) => {
-            const event:Event = {
-            allDay: false,
-            title: a.title,
-            start: a.appointmentStart,
-            end: a.appointmentEnd,
-            resource: undefined
+            const event:AppointmentEvent = {
+              appointment: a,
+              allDay: false,
+              title: a.title,
+              start: a.appointmentStart,
+              end: a.appointmentEnd,
+              resource: undefined
           };
           return event;
         });
+      },
+      removeAppointements: (state, action: PayloadAction<Appointement>) => {
+        
       },
       setCurrentAppointement: (state, action: PayloadAction<Appointement | undefined>) => {
         state.currentAppointement = action.payload;
@@ -75,7 +79,8 @@ export const appointementSlice = createSlice({
                  setCurrentAppointement, 
                  setModalOperation, 
                  updateSearch,
-                 addAppointements
+                 addAppointements,
+                 removeAppointements
                 } = appointementSlice.actions;
 
   // The function below is called a selector and allows us to select a value from

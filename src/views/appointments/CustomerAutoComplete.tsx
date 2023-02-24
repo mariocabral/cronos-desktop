@@ -7,6 +7,7 @@ import { CustomerService } from '../../services/CustomerService';
   
 interface CustomerAutoCompleteProps {
   onChange: (newValue: CustomerItem | null) => void;
+  value: CustomerItem | null;
 }
 
 export interface CustomerItem {
@@ -14,7 +15,7 @@ export interface CustomerItem {
   id: string
 }
 
-const CustomerAutoComplete = ({onChange}: CustomerAutoCompleteProps) => {
+const CustomerAutoComplete = ({onChange, value}: CustomerAutoCompleteProps) => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const [open, setOpen] = React.useState(false);
@@ -67,6 +68,7 @@ const CustomerAutoComplete = ({onChange}: CustomerAutoCompleteProps) => {
       onChange={(event: React.SyntheticEvent, newValue: CustomerItem | null) => {
         setValue(newValue);
       }}
+      value={value}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
       options={customerOptions}
