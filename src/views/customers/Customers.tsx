@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Box, useTheme } from "@mui/material";
 import { tokens, ThemeContextType } from '../../theme';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import mockDataProfesionals from '../../mock-data/profesional';
+import mockDataCustomerss from '../../mock-data/customers';
 import Header from '../../components/Header';
 import EmptyRows from '../../components/EmptyRows';
 
-const Profesionals: React.FC = () => {
+
+const Customers: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const {t} = useTranslation();
@@ -16,38 +17,35 @@ const Profesionals: React.FC = () => {
     { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "fullName",
-      headerName: t('views.profesional.table.name'),
+      headerName: t('views.customers.table.fullName'),
       flex: 1,
       cellClassName: "name-column--cell",
-    },
-    {
-      field: "degree",
-      headerName: t('views.profesional.table.degree'),
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "licence",
-      headerName: t('views.profesional.table.licence'),
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "phone",
-      headerName: t('views.profesional.table.phones'),
-      cellClassName: "name-column--cell",
-      flex: 1,
     },
     {
       field: "email",
-      headerName: t('views.profesional.table.email'),
+      headerName: t('views.customers.table.email'),
+      flex: 1,
+    },
+    {
+      field: "phone",
+      headerName: t('views.customers.table.phone'),
+      flex: 1,
+    },
+    {
+      field: "profesionals",
+      headerName: t('views.customers.table.profesionals'),
+      flex: 1,
+    },
+    {
+      field: "nextsAppointments",
+      headerName: t('views.customers.table.nextsAppointments'),
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px" >
-      <Header title={t('views.profesional.title')} subtitle={t('views.profesional.subtitle')}></Header>
+      <Header title={t('views.customers.title')} subtitle={t('views.customers.subtitle')}></Header>
       
       
       <Box justifyContent="space-between" alignItems="center" >
@@ -86,7 +84,7 @@ const Profesionals: React.FC = () => {
       >
         
   <DataGrid
-          rows={mockDataProfesionals}
+          rows={mockDataCustomerss}
           columns={columns}
           components={{ 
             Toolbar: GridToolbar, 
@@ -101,4 +99,4 @@ const Profesionals: React.FC = () => {
   );
 }
 
-export default Profesionals;
+export default Customers;

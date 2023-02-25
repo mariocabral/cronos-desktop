@@ -8,11 +8,12 @@ import AppContent from './components/AppContent';
 import { ThemeConfig } from "./theme";
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Stack } from '@mui/material';
-
+import loadAppointmentsMocks from './mock-data/LoadersMockData';
 
 const detach = await attachConsole()
 
 const App: React.FC = () => {
+  loadAppointmentsMocks();
 
   info("Info");
   detach();

@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import { Box, useTheme } from "@mui/material";
 import { tokens, ThemeContextType } from '../../theme';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import mockDataProfesionals from '../../mock-data/profesional';
+import mockDatahealtcares from '../../mock-data/healtcare';
 import Header from '../../components/Header';
 import EmptyRows from '../../components/EmptyRows';
 
-const Profesionals: React.FC = () => {
+
+const Healtcare: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const {t} = useTranslation();
@@ -15,39 +16,31 @@ const Profesionals: React.FC = () => {
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
     {
-      field: "fullName",
-      headerName: t('views.profesional.table.name'),
+      field: "name",
+      headerName: t('views.healtcare.table.name'),
       flex: 1,
       cellClassName: "name-column--cell",
-    },
-    {
-      field: "degree",
-      headerName: t('views.profesional.table.degree'),
-      headerAlign: "left",
-      align: "left",
-    },
-    {
-      field: "licence",
-      headerName: t('views.profesional.table.licence'),
-      headerAlign: "left",
-      align: "left",
     },
     {
       field: "phone",
-      headerName: t('views.profesional.table.phones'),
-      cellClassName: "name-column--cell",
+      headerName: t('views.healtcare.table.phone'),
       flex: 1,
     },
     {
-      field: "email",
-      headerName: t('views.profesional.table.email'),
+      field: "profesionals",
+      headerName: t('views.healtcare.table.profesionals'),
+      flex: 1,
+    },
+    {
+      field: "customers",
+      headerName: t('views.healtcare.table.customers'),
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px" >
-      <Header title={t('views.profesional.title')} subtitle={t('views.profesional.subtitle')}></Header>
+      <Header title={t('views.healtcare.title')} subtitle={t('views.healtcare.subtitle')}></Header>
       
       
       <Box justifyContent="space-between" alignItems="center" >
@@ -86,7 +79,7 @@ const Profesionals: React.FC = () => {
       >
         
   <DataGrid
-          rows={mockDataProfesionals}
+          rows={mockDatahealtcares}
           columns={columns}
           components={{ 
             Toolbar: GridToolbar, 
@@ -101,4 +94,4 @@ const Profesionals: React.FC = () => {
   );
 }
 
-export default Profesionals;
+export default Healtcare;

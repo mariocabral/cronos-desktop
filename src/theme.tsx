@@ -10,7 +10,6 @@ type ThemeProp = {
   children: JSX.Element;
 };
 
-
 // color design tokens export
 export const tokens = (mode: ThemeContextType) => ({
   ...(mode === ThemeContextType.dark
@@ -206,7 +205,7 @@ export const themeSettings = (mode: ThemeContextType) => {
 export const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 export const ThemeConfig: React.FC<ThemeProp> = ({ children }) => {
-  const [mode, setMode] = useState(ThemeContextType.dark);
+  const [mode, setMode] = useState(ThemeContextType.light);
 
   const colorMode = useMemo(
     () => ({

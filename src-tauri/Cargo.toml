@@ -25,8 +25,8 @@ libsqlite3-sys = { version = "0.25.2", features = ["bundled"] }
 dotenv = "0.15.0"
 uuid = { version = "1.2.2", features = [ "v4", "fast-rng", "macro-diagnostics" ] }
 #chrono = { version = "0.4", default-features = false, features = ["alloc", "std", "rkyv"], optional = true }
-chrono = { version = "0.4.19", default-features = false, features = ["clock", "std"] }
-ts-rs = "6.2"
+chrono = { version = "0.4.23", default-features = false, features = ["clock", "std", "serde"] }
+ts-rs = {version = "6.2", features= ["format"] }
 
 [features]
 # by default Tauri runs in production mode

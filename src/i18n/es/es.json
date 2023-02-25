@@ -1,98 +1,220 @@
 {
-    "sidebar": {
-        "title": "Cronos Med",
-        "description": "Aplicaci[on para la gestion de turnos",
-        "dashboard": "Panel General",
-        "schedule": {
-            "title": "Calendario",
-            "appointment": "Turnos"
-        },
-        "admin": {
-            "title": "Administración",
-            "profesional": "Profesionales",
-            "rooms": "Salas de consulta",
-            "patients": "Pacientes",
-            "healt": "Mutuales",
-            "reports": "Reportes"
-        },
-        "extra": {
-            "title": "Extras",
-            "stats": {
-                "title": "Estadísticas",
-                "patients": "Pacientes",
-                "profesional": "Profesionales",
-                "healt": "Mutuales"
-            }
-        }
-    },
-    "header": {
-        "dashboard":"Panel General",
-        "setting": "Configuracion"
-    },
-    "views": {
-        "profesional": {
-            "title": "Administracion de profesionales",
-            "profesional_count" : "Total de profesionales",
-            "search": "Buscar",
-            "table": {
-                "name": "Nombre y Apellido",
-                "licence": "Matricula",
-                "phones" : "Telefonos"
-            },
-            "modal":{
-                "title" : {
-                  "add": "Agregar un nuevo Profesional",
-                  "delete": "Eliminar datos de un Profesional",
-                  "edit": "Editar los datos de un Profesional",
-                  "show":"Mostrar los datos de un Profesional"
-                },
-                "form": {
-                    "name": "Nombre",
-                    "last_name":"Apellido",
-                    "degree": "Titulo",
-                    "licence": "Matricula",
-                    "phone1": "Telefono principal",
-                    "phone2": "Telefono alternativo",
-                    "email": "Correo electronico",
-                    "enable": "Habilitar",
-                    "submit": "Guardar",
-                    "close": "Cerrar",
-                    "cancel": "Cancelar",
-                    "delete": "Borrar"
-                },
-                "deleteDescription": "El profesional {{lastName}}, {{firstName}} sera eliminado del sistema."
-            }
-        },
-        "room": {
-            "title": "Administracion de consultorios",
-            "room_count" : "Total de consultorios",
-            "search": "Buscar",
-            "table": {
-                "name": "Nombre",
-                "enabled": "Estado",
-                "description" : "Descripción",
-                "enabledFlag" : "Habilitada",
-                "disabledFlag" : "Deshabilitada"
-            },
-            "modal":{
-                "title" : {
-                  "add": "Agregar una nueva Sala",
-                  "delete": "Eliminar datos de una Sala",
-                  "edit": "Editar los datos de una Sala",
-                  "show":"Mostrar los datos de una Sala"
-                },
-                "form": {
-                    "name": "Nombre",
-                    "description": "Descripción",
-                    "descriptionText": "El texto no debe superar los 300 caracteres.",
-                    "enable": "Habilitar",
-                    "submit": "Guardar",
-                    "close": "Cerrar",
-                    "cancel": "Cancelar",
-                    "delete": "Borrar"
-                },
-                "deleteDescription": "La sala '{{name}}' sera eliminada del sistema."
-            }
-        }
-    }
+    "languaje": "es",
+	"sidebar": {
+		"title": "Cronos Med",
+		"description": "Aplicaci[on para la gestion de turnos",
+		"dashboard": "Panel General",
+		"schedule": {
+			"title": "Calendario",
+			"appointment": "Turnos"
+		},
+		"admin": {
+			"appointments": "Turnos",
+			"title": "Administración",
+			"profesional": "Profesionales",
+			"rooms": "Salas de consulta",
+			"customers": "Pacientes",
+			"healtcare": "Mutuales",
+			"reports": "Reportes"
+		},
+		"extra": {
+			"title": "Extras",
+			"stats": {
+				"title": "Estadísticas",
+				"patients": "Pacientes",
+				"profesional": "Profesionales",
+				"healt": "Mutuales"
+			}
+		}
+	},
+	"header": {
+		"dashboard": "Panel General",
+		"setting": "Configuracion"
+	},
+	"views": {
+		"commons": {
+			"table": {
+				"empty": "Sin datos"
+			}
+		},
+		"profesional": {
+			"title": "Administracion de profesionales",
+			"subtitle": "",
+			"table": {
+				"name": "Nombre y Apellido",
+				"degree": "Titulo profesional",
+				"licence": "Matricula",
+				"phones": "Telefonos",
+				"email": "E-Mail"
+			},
+			"modal": {
+				"title": {
+					"add": "Agregar un nuevo Profesional",
+					"delete": "Eliminar datos de un Profesional",
+					"edit": "Editar los datos de un Profesional",
+					"show": "Mostrar los datos de un Profesional"
+				},
+				"form": {
+					"name": "Nombre",
+					"last_name": "Apellido",
+					"degree": "Titulo",
+					"licence": "Matricula",
+					"phone1": "Telefono principal",
+					"phone2": "Telefono alternativo",
+					"email": "Correo electronico",
+					"enable": "Habilitar",
+					"submit": "Guardar",
+					"close": "Cerrar",
+					"cancel": "Cancelar",
+					"delete": "Borrar"
+				},
+				"deleteDescription": "El profesional {{lastName}}, {{firstName}} sera eliminado del sistema."
+			}
+		},
+		"rooms": {
+			"title": "Administracion de consultorios",
+			"subtitle": "",
+			"table": {
+				"name": "Nombre",
+				"profesionals": "Profesionales",
+				"phones": "Telefonos",
+				"description": "Descripción"
+			},
+			"modal": {
+				"title": {
+					"add": "Agregar una nueva Sala",
+					"delete": "Eliminar datos de una Sala",
+					"edit": "Editar los datos de una Sala",
+					"show": "Mostrar los datos de una Sala"
+				},
+				"form": {
+					"name": "Nombre",
+					"description": "Descripción",
+					"descriptionText": "El texto no debe superar los 300 caracteres.",
+					"enable": "Habilitar",
+					"submit": "Guardar",
+					"close": "Cerrar",
+					"cancel": "Cancelar",
+					"delete": "Borrar"
+				},
+				"deleteDescription": "La sala '{{name}}' sera eliminada del sistema."
+			}
+		},
+		"customers": {
+			"title": "Administracion de Pacientes",
+			"subtitle": "",
+			"table": {
+				"fullName": "Nombre y Apellido",
+				"profesionals": "Profesionales",
+				"phone": "Telefonos",
+				"email": "Correo electronico",
+				"nextsAppointments": "Turnos Pendientes"
+			},
+			"modal": {
+				"title": {
+					"add": "Agregar un paciente",
+					"delete": "Eliminar datos de un paciente",
+					"edit": "Editar los datos de un paciente",
+					"show": "Mostrar los datos de un paciente"
+				},
+				"form": {
+					"name": "Nombre",
+					"description": "Descripción",
+					"descriptionText": "El texto no debe superar los 300 caracteres.",
+					"enable": "Habilitar",
+					"submit": "Guardar",
+					"close": "Cerrar",
+					"cancel": "Cancelar",
+					"delete": "Borrar"
+				},
+				"deleteDescription": "El paciente '{{name}}' sera eliminada del sistema."
+			}
+		},
+		"healtcare": {
+			"title": "Administracion de Mutuales",
+			"subtitle": "",
+			"table": {
+				"name": "Nombre",
+				"profesionals": "Profesionales",
+				"phone": "Telefonos",
+				"email": "Correo electronico",
+				"customers": "Pacientes"
+			},
+			"modal": {
+				"title": {
+					"add": "Agregar un paciente",
+					"delete": "Eliminar datos de un paciente",
+					"edit": "Editar los datos de un paciente",
+					"show": "Mostrar los datos de un paciente"
+				},
+				"form": {
+					"name": "Nombre",
+					"description": "Descripción",
+					"descriptionText": "El texto no debe superar los 300 caracteres.",
+					"enable": "Habilitar",
+					"submit": "Guardar",
+					"close": "Cerrar",
+					"cancel": "Cancelar",
+					"delete": "Borrar"
+				},
+				"deleteDescription": "El paciente '{{name}}' sera eliminada del sistema."
+			}
+		},
+		"appointments": {
+			"title": "Administración de Turnos",
+			"subtitle": "",
+			"table": {
+				"name": "Nombre",
+				"profesionals": "Profesionales",
+				"phone": "Telefonos",
+				"email": "Correo electronico",
+				"customers": "Pacientes"
+			},
+			"modal": {
+				"title": {
+					"add": "Agregar un nuevo turno",
+					"delete": "Eliminar datos de un paciente",
+					"edit": "Editar los datos de un paciente",
+					"show": "Mostrar los datos de un paciente"
+				},
+				"form": {
+					"title": "Agregar Titulo",
+					"customer": "Agregar cliente",
+					"repeat": "Repetir evento",
+					"profesional": "Agregar Profesional",
+					"healtCare": "Agregar Mutual",
+					"rooms": "Agregar Sala de Consulta",
+					"description": "Descripción",
+					"descriptionText": "El texto no debe superar los 300 caracteres.",
+					"day": "Día",
+					"from":"Desde",
+					"to":"Hasta",
+					"enable": "Habilitar",
+					"submit": "Guardar",
+					"close": "Cerrar",
+					"cancel": "Cancelar",
+					"delete": "Borrar"
+				},
+				"deleteDescription": "El paciente '{{name}}' sera eliminada del sistema."
+			},
+			"repeatModes": {
+				"notRepeat" : "no repetir",
+				"wekday" : "todos los dias de la semana (Lunes-Viernes)",
+				"daily" : "diario",
+				"weekly" : "semanalmente",
+				"monthly" : "mensaualmente",
+				"yearly" : "anualmente"
+			}
+		}
+	},
+	"calendar": {
+		"week": "Semana",
+		"work_week": "Semana de trabajo",
+		"day": "Día",
+		"month": "Mes",
+		"previous": "Atrás",
+		"next": "Después",
+		"today": "Hoy",
+		"agenda": "El Diario"
+	}
 }
