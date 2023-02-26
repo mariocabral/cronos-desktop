@@ -37,6 +37,10 @@
 				"empty": "Sin datos"
 			}
 		},
+		"dashboard": {
+			"title": "Panel de control",
+			"subtitle": ""
+		},
 		"profesional": {
 			"title": "Administracion de profesionales",
 			"subtitle": "",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, useTheme } from "@mui/material";
+import { Box, Paper, Stack, useTheme } from "@mui/material";
 import { ThemeContextType, tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
 import Header from '../../components/Header';
@@ -97,6 +97,7 @@ const Appointments: React.FC = () => {
   return (
     <Box m="20px" >
       <Header title={t('views.appointments.title')} subtitle={t('views.appointments.subtitle')}></Header>
+
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR */}
         <Box flex="1 1 100%" ml="15px">
