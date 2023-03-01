@@ -44,12 +44,21 @@
 		"profesional": {
 			"title": "Administracion de profesionales",
 			"subtitle": "",
+			"stats":{
+				"totals": "Totales",
+				"profesionals": "Profesionales"
+			},
 			"table": {
 				"name": "Nombre y Apellido",
 				"degree": "Titulo profesional",
 				"licence": "Matricula",
 				"phones": "Telefonos",
-				"email": "E-Mail"
+				"email": "E-Mail",
+				"action": {
+					"add": "Nuevo",
+					"delete": "Eliminar",
+					"edit": "Editar"
+				}
 			},
 			"modal": {
 				"title": {

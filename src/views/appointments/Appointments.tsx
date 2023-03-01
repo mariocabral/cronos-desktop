@@ -43,7 +43,7 @@ const DnDCalendar = withDragAndDrop(BigCalendar)
 const Appointments: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const culture = t('languaje');
   const lang = {
     week: t('calendar.week'),
@@ -66,7 +66,7 @@ const Appointments: React.FC = () => {
     console.log(data);
   }
 
-  const handleSelectSlot = ({ start, end } : Event) => {
+  const handleSelectSlot = ({ start, end }: Event) => {
     console.log(`New appointment. start=${start} and end=${end}`);
     dispatch(setModalOperation(Operations.ADD_APPOINTMENT));
     dispatch(setCurrentAppointement({
@@ -79,7 +79,7 @@ const Appointments: React.FC = () => {
       roomName: null,
       healtcareId: null,
       healtcareName: null,
-      appointmentStart: start ?? moment().toDate() ,
+      appointmentStart: start ?? moment().toDate(),
       appointmentEnd: end ?? moment().add(1, 'hours').toDate(),
       enabled: true,
     }));
@@ -101,25 +101,25 @@ const Appointments: React.FC = () => {
       <Box display="flex" justifyContent="space-between">
         {/* CALENDAR */}
         <Box flex="1 1 100%" ml="15px">
-        <div >
-    
-          <DnDCalendar
-            views={['week', 'day', 'agenda']}
-            messages={lang}
-            culture={culture}
-            defaultView='day'
-            events={appointmentState.events}
-            localizer={localizer}
-            onEventDrop={onEventDrop}
-            onEventResize={onEventResize}
-            onSelectSlot={handleSelectSlot}
-            onSelectEvent={handleSelectEvent}
-            resizable
-            selectable
-            min={new Date(0, 0, 0, 8, 0, 0)}
-            max={new Date(0, 0, 0, 20, 0, 0)}
-          />
-        </div>
+          <div >
+
+            <DnDCalendar
+              views={['week', 'day', 'agenda']}
+              messages={lang}
+              culture={culture}
+              defaultView='day'
+              events={appointmentState.events}
+              localizer={localizer}
+              onEventDrop={onEventDrop}
+              onEventResize={onEventResize}
+              onSelectSlot={handleSelectSlot}
+              onSelectEvent={handleSelectEvent}
+              resizable
+              selectable
+              min={new Date(0, 0, 0, 8, 0, 0)}
+              max={new Date(0, 0, 0, 20, 0, 0)}
+            />
+          </div>
         </Box>
       </Box>
       <AppointmentsModal></AppointmentsModal>

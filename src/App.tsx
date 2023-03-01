@@ -8,12 +8,14 @@ import AppContent from './components/AppContent';
 import { ThemeConfig } from "./theme";
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { Stack } from '@mui/material';
-import loadAppointmentsMocks from './mock-data/LoadersMockData';
+import { loadAppointmentsMocks, loadProfesionalMocks } from './mock-data/LoadersMockData';
+import { StyledEngineProvider } from '@mui/material/styles';
 
 const detach = await attachConsole()
 
 const App: React.FC = () => {
   loadAppointmentsMocks();
+  loadProfesionalMocks();
 
   info("Info");
   detach();
@@ -32,7 +34,7 @@ const App: React.FC = () => {
             <AppHeader/>
             <Suspense fallback={loading}>
               <Routes>
-                <Route path="*"  element={<AppContent />} />
+                <Route path="*"  element={ <StyledEngineProvider injectFirst><AppContent /></StyledEngineProvider>} />
               </Routes>
             </Suspense>
             <AppFooter />
