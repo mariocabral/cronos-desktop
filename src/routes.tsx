@@ -8,7 +8,7 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
-const Profesionals = React.lazy(() => import('./views/profesionals/Profesionals'))
+const ProfesionalsView = React.lazy(() => import('./views/profesionals/ProfesionalsView'))
 const Rooms = React.lazy(() => import('./views/rooms/Rooms'))
 const Customers = React.lazy(() => import('./views/customers/Customers'))
 const Healtcare = React.lazy(() => import('./views/healtcare/Healtcare'))
@@ -62,7 +62,7 @@ export const navegationItems: Array<NavigationRouteItem> = [
     name: "profesionals",
     path:"/profesionals",
     icon:<PeopleOutlinedIcon/>,
-    element: Profesionals 
+    element: ProfesionalsView 
   },
   {
     type: ComponentItemType.access,
