@@ -9,6 +9,7 @@ pub struct ProfesionalsEntity {
     pub profesional_id: String,
     pub first_name: String,
     pub last_name: String,
+    pub full_name: String,
     pub degree: String,
     pub licence: String,
     pub email: String,

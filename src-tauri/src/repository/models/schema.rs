@@ -6,6 +6,7 @@ diesel::table! {
         profesional_id -> Text,
         first_name -> Text,
         last_name -> Text,
+        full_name -> Text,
         degree -> Text,
         licence -> Text,
         email -> Text,

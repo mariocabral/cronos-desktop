@@ -91,7 +91,16 @@
 				"name": "Nombre",
 				"profesionals": "Profesionales",
 				"phones": "Telefonos",
-				"description": "Descripción"
+				"description": "Descripción",
+				"action": {
+					"add": "Nuevo",
+					"delete": "Eliminar",
+					"edit": "Editar"
+				}
+			},
+			"stats":{
+				"totals": "Totales",
+				"rooms": "Consultorios"
 			},
 			"modal": {
 				"title": {
