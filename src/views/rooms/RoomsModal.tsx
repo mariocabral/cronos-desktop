@@ -9,6 +9,10 @@ import { Operations } from '../../state/models/RoomsState';
 import { faUserDoctor, faUser, faPencil, faGraduationCap, faIdCard, faAt, faCheck, faPhone, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import NotesOutlinedIcon from '@mui/icons-material/NotesOutlined';
+import RichTextEditor, { createValueFromString, createEmptyValue } from 'react-rte';
+import { Rooms } from '../../bindings/Rooms';
+import ProfesionalAutoComplete, { ProfesionalItem } from './ProfesionalAutoComplete';
 
 
 
@@ -31,7 +35,20 @@ const RoomsModal: React.FC = () => {
     default:
         break;
   }
-  
+  var value = createEmptyValue();
+  const showMode = roomsState.modalOperation == Operations.SHOW_ROOMS;
+  let currentRoom: Rooms = {
+    name: '',
+    description: '',
+    phone: '',
+    enabled: true
+  };
+  if (showMode && roomsState.currentRoom) {
+    currentRoom = roomsState.currentRoom;
+  }
+
+
+
   const style = {
     position: 'absolute' as 'absolute',
     top: '20%',
@@ -60,6 +77,15 @@ const RoomsModal: React.FC = () => {
     dispatch(showRoomModal(false));
   };
 
+  const updateNotes = (newValue: any) => {
+    currentRoom.description = newValue;
+    setShowSaveButton(false);
+  }
+
+  const updateProfesionals = (newValue: ProfesionalItem[] | undefined) => {
+    setShowSaveButton(false);
+  }
+
   return (
     <Modal
       open={roomsState.showRoomModal}
@@ -84,52 +110,21 @@ const RoomsModal: React.FC = () => {
             <Divider />
             <Stack direction='row' spacing={2} alignItems='center'>
               <FontAwesomeIcon icon={faPencil} size='2x' color={colors.grey[300]} />
-              <div></div>
               <TextField
                     fullWidth
                     label='Nombre'
                     variant="outlined"
                 />
-                <TextField
-                    fullWidth
-                    label='Apellido'
-                    variant="outlined"
-                />
             </Stack>
             <Stack direction='row' spacing={2} alignItems='center'>
-              <FontAwesomeIcon icon={faGraduationCap} size='1x' color={colors.grey[300]} />
-              <TextField
-                    fullWidth
-                    label='Titulo'
-                    variant="outlined"
-                />
-            </Stack>
-            <Stack direction='row' spacing={2} alignItems='center'>
-              <FontAwesomeIcon icon={faIdCard} size='1x' color={colors.grey[300]} />
-              <TextField
-                    fullWidth
-                    label='Matricula'
-                    variant="outlined"
-                />
-            </Stack>
-            <Stack direction='row' spacing={2} alignItems='center'>
-              <FontAwesomeIcon icon={faAt} size='1x' color={colors.grey[300]} />
-              <TextField
-                    fullWidth
-                    label='Email'
-                    variant="outlined"
-                />
+              <FontAwesomeIcon icon={faUserDoctor} size='1x' color={colors.grey[300]} />
+              <ProfesionalAutoComplete values={[]} onChange={updateProfesionals}/>
             </Stack>
             <Stack direction='row' spacing={2} alignItems='center'>
               <FontAwesomeIcon icon={faPhone} size='1x' color={colors.grey[300]} />
               <TextField
                     fullWidth
-                    label='Telefono 1'
-                    variant="outlined"
-                />
-                <TextField
-                    fullWidth
-                    label='Telefono 2'
+                    label='Telefono (Interno)'
                     variant="outlined"
                 />
             </Stack>
@@ -140,6 +135,13 @@ const RoomsModal: React.FC = () => {
                   onChange={()=>{}}
                 />
             </Stack>
+            <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
+              <NotesOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+              <RichTextEditor
+                value={value}
+                onChange={updateNotes}
+              />
+            </Box>
           </Stack>
         </Box>
       </Box>
