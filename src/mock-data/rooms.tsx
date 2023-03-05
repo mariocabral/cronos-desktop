@@ -6,10 +6,8 @@ const mockDataRooms = [
       name: "sala 1",
       profesionals: ["John Snow", "Cersei Lannister"],
       description: "sala grande",
-      phone: [
-        "(665)121-5454",
-        "(665)121-5454"
-      ],
+      phone: "(665)121-5454",
+      enabled: true,
     },
     {
       id: 2,
@@ -17,7 +15,8 @@ const mockDataRooms = [
       name: "sala 2",
       profesionals: [],
       description: "sala grande",
-      phone: [],
+      phone: '',
+      enabled: true,
     },
     {
       id: 3,
@@ -25,7 +24,8 @@ const mockDataRooms = [
       name: "sala 3",
       profesionals: ["Anya Stark"],
       description: "sala grande",
-      phone: ["(665)121-5454"],
+      phone: "(665)121-5454",
+      enabled: true,
     },
   ];
   

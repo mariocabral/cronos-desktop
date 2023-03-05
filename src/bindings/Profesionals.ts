@@ -6,6 +6,7 @@ export interface Profesionals {
   profesionalId?: string;
   firstName: string;
   lastName: string;
+  fullName: string;
   degree: string;
   licence: string;
   email: string;

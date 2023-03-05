@@ -7,7 +7,7 @@ import Header from '../../components/Header';
 import EmptyRows from '../../components/EmptyRows';
 import StatsMedium from '../../components/StatsMedium';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserDoctor, faUserPlus, faUserPen, faUserMinus } from '@fortawesome/free-solid-svg-icons';
+import { faUserDoctor, faUserPlus, faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ProfesionalModal from './ProfesionalModal';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { selectProfesional, setCurrentProfesional, showProfesionalModal, setModalOperation } from '../../state/reducers/profesionalReducer';
@@ -89,13 +89,13 @@ const ProfesionalsView: React.FC = () => {
         width: 80,
         getActions: (params: any) => [
           <GridActionsCellItem
-            icon={<FontAwesomeIcon icon={faUserMinus} size='1x' color={colors.redAccent[600]} />}
+            icon={<FontAwesomeIcon icon={faTrash} size='1x' color={colors.redAccent[600]} />}
             label={t('views.profesional.table.action.delete')}
             onClick={deleteProfesional(params.id)}
             
           />,
           <GridActionsCellItem
-            icon={<FontAwesomeIcon icon={faUserPen} size='1x' color={colors.primary[300]} />}
+            icon={<FontAwesomeIcon icon={faPen} size='1x' color={colors.primary[300]} />}
             label={t('views.profesional.table.action.edit')}
             onClick={showProfesional(params.id)}
           />,
