@@ -3,13 +3,20 @@ const mockDataCustomers = [
     {
       id: 1,
       customerId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
-      name: "John",
+      firstName: "John",
       lastName: "Snow",
       fullName:"John Snow",
       email: "jonsnow@gmail.com",
+      enabled: true,
       phone: [
-        "(665)121-5454",
-        "(665)121-5454"
+        {
+          phone: "(665)121-5454",
+          enabled: true,
+        },
+        {
+          phone: "(665)121-5454",
+          enabled: true,
+        }
       ],
       profesionals: ["Cersei Lannister", "Anya Stark"],
       nextsAppointments: {
@@ -20,13 +27,20 @@ const mockDataCustomers = [
     {
       id: 2,
       customerId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
-      name: "Cersei",
+      firstName: "Cersei",
       email: "cerseilannister@gmail.com",
       lastName: "Lannister",
       fullName:"Cersei Lannister",
+      enabled: true,
       phone: [
-        "(421)314-2288",
-        "(421)314-2288"
+        {
+          phone: "(665)121-5454",
+          enabled: true,
+        },
+        {
+          phone: "(665)121-5454",
+          enabled: true,
+        }
       ],
       profesionals: ["Cersei Lannister"],
       nextsAppointments: {
@@ -37,22 +51,27 @@ const mockDataCustomers = [
     {
       id: 3,
       customerId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
-      name: "Jaime",
+      firstName: "Jaime",
       email: "jaimelannister@gmail.com",
       lastName: "Lannister",
       fullName:"Jaime Lannister",
-      phone: ["(422)982-6739", "(422)982-6739"],
+      enabled: true,
+      phone: [{
+        phone: "(665)121-5454",
+        enabled: true,
+      }],
       profesionals: ["Cersei Lannister"],
       nextsAppointments: null,
     },
     {
       id: 4,
       customerId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
-      name: "Anya",
+      firstName: "Anya",
       email: "anyastark@gmail.com",
       lastName: "Stark",
       fullName:"Anya Stark",
-      phone: ["(921)425-6742", "(921)425-6742"],
+      phone: [],
+      enabled: true,
       profesionals: ["Cersei Lannister", "Anya Stark"],
       nextsAppointments: {
         profesional: "Cersei Lannister",

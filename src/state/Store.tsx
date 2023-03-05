@@ -4,6 +4,7 @@ import thunk from "redux-thunk"
 import profesionalReducer from './reducers/profesionalReducer';
 import appointmentReducer from './reducers/appointmentReducer';
 import roomsReducer from './reducers/roomsReducer';
+import customerReducer from './reducers/customerReducer';
 
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
     profesional: profesionalReducer,
     appointment: appointmentReducer,
     rooms: roomsReducer,
+    customer: customerReducer,
   },
   middleware: [thunk, logger],
 })

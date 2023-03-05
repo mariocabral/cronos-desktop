@@ -7,7 +7,7 @@ use ts_rs::TS;
 pub struct CustomersPhones {
     #[serde(rename = "_id", skip_serializing_if = "Option::is_none")]
     pub id: Option<String>,
-    #[serde(rename = "profesional_id", skip_serializing_if = "Option::is_none")]
+    #[serde(rename = "customer_id", skip_serializing_if = "Option::is_none")]
     pub customer_id: Option<String>,
     pub phone: String,
     pub enabled: bool,
