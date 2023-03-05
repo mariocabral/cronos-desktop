@@ -3,9 +3,11 @@ import { useAppDispatch } from '../state/hooks';
 import { updateProfesionalList } from '../state/reducers/profesionalReducer';
 import { updateAppointementsList } from '../state/reducers/appointmentReducer';
 import { updateRoomsList } from '../state/reducers/roomsReducer';
+import { updateCustomerList } from '../state/reducers/customerReducer';
 import mockDataAppointments from './appointments';
 import mockDataProfesionals from './profesional';
 import mockDataRooms from './rooms';
+import mockDataCustomers from './customers';
 
 
 
@@ -24,4 +26,7 @@ export const loadRoomsMocks = () => {
     dispatch(updateRoomsList(mockDataRooms));
 };
 
-
+export const loadCustomerMocks = () => {
+    const dispatch = useAppDispatch();
+    dispatch(updateCustomerList(mockDataCustomers));
+};

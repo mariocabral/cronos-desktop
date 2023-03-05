@@ -2,7 +2,7 @@
 
 export interface CustomersPhones {
   _id?: string;
-  profesional_id?: string;
+  customer_id?: string;
   phone: string;
   enabled: boolean;
   createdAt?: string;

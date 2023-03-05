@@ -130,7 +130,16 @@
 				"profesionals": "Profesionales",
 				"phone": "Telefonos",
 				"email": "Correo electronico",
-				"nextsAppointments": "Turnos Pendientes"
+				"nextsAppointments": "Turnos Pendientes",
+				"action": {
+					"add": "Nuevo",
+					"delete": "Eliminar",
+					"edit": "Editar"
+				}
+			},
+			"stats":{
+				"totals": "Totales",
+				"customers": "Pacientes"
 			},
 			"modal": {
 				"title": {

@@ -40,7 +40,7 @@ const localizer = dateFnsLocalizer({
 //@ts-ignore
 const DnDCalendar = withDragAndDrop(BigCalendar)
 
-const Appointments: React.FC = () => {
+const AppointmentsView: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const { t } = useTranslation();
@@ -129,4 +129,4 @@ const Appointments: React.FC = () => {
 
 
 
-export default Appointments
+export default AppointmentsView

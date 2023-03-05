@@ -9,10 +9,10 @@ import CalendarMonthOutlinedIcon from '@mui/icons-material/CalendarMonthOutlined
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const ProfesionalsView = React.lazy(() => import('./views/profesionals/ProfesionalsView'))
-const RoomsView = React.lazy(() => import('./views/rooms/Rooms'))
-const Customers = React.lazy(() => import('./views/customers/Customers'))
+const RoomsView = React.lazy(() => import('./views/rooms/RoomsView'))
+const CustomersView = React.lazy(() => import('./views/customers/CustomersView'))
 const Healtcare = React.lazy(() => import('./views/healtcare/Healtcare'))
-const Appointments = React.lazy(() => import('./views/appointments/Appointments'))
+const AppointmentsView = React.lazy(() => import('./views/appointments/AppointmentsView'))
 
 
 export enum ComponentItemType {
@@ -49,7 +49,7 @@ export const navegationItems: Array<NavigationRouteItem> = [
     name: "appointments",
     path:"/appointments",
     icon:<CalendarMonthOutlinedIcon/>,
-    element: Appointments 
+    element: AppointmentsView 
   },
   {
     type: ComponentItemType.title,
@@ -78,7 +78,7 @@ export const navegationItems: Array<NavigationRouteItem> = [
     name: "customers",
     path:"/customers",
     icon:<ContactPageOutlinedIcon/>,
-    element: Customers 
+    element: CustomersView 
   },
 
   {
