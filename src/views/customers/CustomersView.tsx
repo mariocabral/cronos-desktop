@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseMedical, faPen, faTrash, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Operations } from '../../state/models/CustomerState';
 import StatsMedium from '../../components/StatsMedium';
+import CustomerModal from './CustomerModal';
 
 
 const CustomersView: React.FC = () => {
@@ -166,6 +167,8 @@ const CustomersView: React.FC = () => {
         />
         
       </Box>
+
+      <CustomerModal></CustomerModal>
       </Box>
     </Box>      
 
