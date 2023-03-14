@@ -9,7 +9,7 @@ import { Operations } from '../../state/models/CustomerState';
 import { faUser, faPencil, faGraduationCap, faIdCard, faAt, faCheck, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import HealtCareAutoComplete, { HealtCareItem } from './HealtCareAutoComplete';
+import HealthcareAutoComplete, { HealthcareItem } from './HealthcareAutoComplete';
 import HealthAndSafetyOutlinedIcon from '@mui/icons-material/HealthAndSafetyOutlined';
 
 
@@ -23,7 +23,7 @@ const CustomerModal: React.FC = () => {
   let title = t('views.customers.modal.title.add');
   const editMode = customerState.modalOperation == Operations.EDIT_CUSTOMER;
   const [showSaveButton, setShowSaveButton] = React.useState(editMode);
-  var healtCareItems: HealtCareItem[] | undefined = undefined;
+  var healthcareItems: HealthcareItem[] | undefined = undefined;
 
   switch (customerState.modalOperation) {
     case Operations.ADD_CUSTOMER:
@@ -64,7 +64,7 @@ const CustomerModal: React.FC = () => {
     dispatch(showCustomerModal(false));
   };
 
-  const updateHealtCare = (newValue: HealtCareItem[] | null) => {
+  const updateHealthcare = (newValue: HealthcareItem[] | null) => {
     setShowSaveButton(false);
   }
 
@@ -127,7 +127,7 @@ const CustomerModal: React.FC = () => {
             </Stack>
             <Stack direction='row' spacing={2} alignItems='center'>
               <HealthAndSafetyOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-              <HealtCareAutoComplete onChange={updateHealtCare} value={healtCareItems}></HealtCareAutoComplete>
+              <HealthcareAutoComplete onChange={updateHealthcare} value={healthcareItems}></HealthcareAutoComplete>
             </Stack>
             <Stack direction='row' spacing={2} alignItems='center'>
               <FontAwesomeIcon icon={faCheck} size='1x' color={colors.grey[300]} />

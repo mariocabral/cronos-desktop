@@ -3,29 +3,29 @@ import { Autocomplete, TextField, CircularProgress, useTheme } from "@mui/materi
 import { tokens, ThemeContextType } from "../../theme";
 import { SvgIconComponent } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
-import { HealtCareService } from '../../services/HealtCareService';
+import { HealthcareService } from '../../services/HealthcareService';
   
-interface HealtCareAutoCompleteProps {
-  onChange: (newValue: HealtCareItem | null) => void;
-  value: HealtCareItem | null;
+interface HealthcareAutoCompleteProps {
+  onChange: (newValue: HealthcareItem[] | null) => void;
+  value: HealthcareItem[] | undefined;
 }
 
-export interface HealtCareItem {
+export interface HealthcareItem {
   name: string,
   id: string
 }
 
-const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) => {
+const HealthcareAutoComplete = ({onChange, value}: HealthcareAutoCompleteProps) => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const [open, setOpen] = React.useState(false);
-  const [healtCareOptions, setHealtCareOptions] = React.useState<readonly HealtCareItem[]>([]);
-  const loading = open && healtCareOptions.length === 0;
+  const [healthcareOptions, setHealthcareOptions] = React.useState<readonly HealthcareItem[]>([]);
+  const loading = open && healthcareOptions.length === 0;
   const {t} = useTranslation();
-  const label = t('views.appointments.modal.form.healtCare');
-  const healtCareService = new HealtCareService();
+  const label = t('views.appointments.modal.form.healthcare');
+  const healthcareService = new HealthcareService();
 
-  const setValue = (newValue: HealtCareItem | null) => {
+  const setValue = (newValue: HealthcareItem[] | null) => {
     onChange(newValue);
   };
 
@@ -38,8 +38,8 @@ const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) =>
 
     (async () => {
       if (active) {
-        healtCareService.getHealtCareNames()
-        .then(values => setHealtCareOptions([...values]));
+        healthcareService.getHealthcareNames()
+        .then(values => setHealthcareOptions([...values]));
       }
     })();
 
@@ -50,7 +50,7 @@ const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) =>
 
   React.useEffect(() => {
     if (!open) {
-      setHealtCareOptions([]);
+      setHealthcareOptions([]);
     }
   }, [open]);
 
@@ -65,13 +65,14 @@ const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) =>
       onClose={() => {
         setOpen(false);
       }}
-      onChange={(event: React.SyntheticEvent, newValue: HealtCareItem | null) => {
+      onChange={(event: React.SyntheticEvent, newValue: HealthcareItem[] | null) => {
         setValue(newValue);
       }}
       value={value}
+      multiple={true}
       isOptionEqualToValue={(option, value) => option.name === value.name}
       getOptionLabel={(option) => option.name}
-      options={healtCareOptions}
+      options={healthcareOptions}
       loading={loading}
       renderInput={(params) => (
         <TextField
@@ -92,4 +93,4 @@ const HealtCareAutoComplete = ({onChange, value}: HealtCareAutoCompleteProps) =>
   );
 };
 
-export default HealtCareAutoComplete;
+export default HealthcareAutoComplete;

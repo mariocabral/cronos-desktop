@@ -3,12 +3,11 @@ import { useTranslation } from "react-i18next";
 import { Box, useTheme } from "@mui/material";
 import { tokens, ThemeContextType } from '../../theme';
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import mockDatahealtcares from '../../mock-data/healtcare';
 import Header from '../../components/Header';
 import EmptyRows from '../../components/EmptyRows';
 
 
-const Healtcare: React.FC = () => {
+const HealthcareView: React.FC = () => {
   const theme = useTheme();
   const colors = tokens(ThemeContextType[theme.palette.mode]);
   const {t} = useTranslation();
@@ -17,30 +16,30 @@ const Healtcare: React.FC = () => {
     { field: "id", headerName: "ID", flex: 0.5 },
     {
       field: "name",
-      headerName: t('views.healtcare.table.name'),
+      headerName: t('views.healthcare.table.name'),
       flex: 1,
       cellClassName: "name-column--cell",
     },
     {
       field: "phone",
-      headerName: t('views.healtcare.table.phone'),
+      headerName: t('views.healthcare.table.phone'),
       flex: 1,
     },
     {
       field: "profesionals",
-      headerName: t('views.healtcare.table.profesionals'),
+      headerName: t('views.healthcare.table.profesionals'),
       flex: 1,
     },
     {
       field: "customers",
-      headerName: t('views.healtcare.table.customers'),
+      headerName: t('views.healthcare.table.customers'),
       flex: 1,
     },
   ];
 
   return (
     <Box m="20px" >
-      <Header title={t('views.healtcare.title')} subtitle={t('views.healtcare.subtitle')}></Header>
+      <Header title={t('views.healthcare.title')} subtitle={t('views.healthcare.subtitle')}></Header>
       
       
       <Box justifyContent="space-between" alignItems="center" >
@@ -79,7 +78,7 @@ const Healtcare: React.FC = () => {
       >
         
   <DataGrid
-          rows={mockDatahealtcares}
+          rows={[]}
           columns={columns}
           components={{ 
             Toolbar: GridToolbar, 
@@ -94,4 +93,4 @@ const Healtcare: React.FC = () => {
   );
 }
 
-export default Healtcare;
+export default HealthcareView;

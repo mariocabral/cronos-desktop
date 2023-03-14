@@ -1,8 +1,8 @@
 
-const mockDataHealtcare = [
+const mockDataHealthcare = [
     {
       id: 1,
-      healtcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
+      healthcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
       name: "Osde",
       phone: [
         "(665)121-5454",
@@ -13,7 +13,7 @@ const mockDataHealtcare = [
     },
     {
       id: 2,
-      healtcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
+      healthcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
       name: "Sancor",
       phone: [
         "(665)121-5454",
@@ -24,7 +24,7 @@ const mockDataHealtcare = [
     },
     {
       id: 3,
-      healtcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
+      healthcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
       name: "SwitMedical",
       phone: [
         "(665)121-5454",
@@ -35,7 +35,7 @@ const mockDataHealtcare = [
     },
     {
       id: 4,
-      healtcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
+      healthcareId:"2a70d5fc-aad6-4f19-8cbe-b791646697ce",
       name: "Particular",
       phone: [
         "(665)121-5454",
@@ -46,4 +46,4 @@ const mockDataHealtcare = [
     },
   ];
   
-export default mockDataHealtcare;
+export default mockDataHealthcare;

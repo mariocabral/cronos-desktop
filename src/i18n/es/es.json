@@ -14,7 +14,7 @@
 			"profesional": "Profesionales",
 			"rooms": "Salas de consulta",
 			"customers": "Pacientes",
-			"healtcare": "Mutuales",
+			"healthcare": "Mutuales",
 			"reports": "Reportes"
 		},
 		"extra": {
@@ -161,7 +161,7 @@
 				"deleteDescription": "El paciente '{{name}}' sera eliminada del sistema."
 			}
 		},
-		"healtcare": {
+		"healthcare": {
 			"title": "Administracion de Mutuales",
 			"subtitle": "",
 			"table": {
@@ -213,7 +213,7 @@
 					"customer": "Agregar cliente",
 					"repeat": "Repetir evento",
 					"profesional": "Agregar Profesional",
-					"healtCare": "Agregar Mutual",
+					"healthcare": "Agregar Mutual",
 					"rooms": "Agregar Sala de Consulta",
 					"description": "Descripción",
 					"descriptionText": "El texto no debe superar los 300 caracteres.",

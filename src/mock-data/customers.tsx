@@ -8,7 +8,7 @@ const mockDataCustomers = [
       fullName:"John Snow",
       email: "jonsnow@gmail.com",
       enabled: true,
-      phone: [
+      phones: [
         {
           phone: "(665)121-5454",
           enabled: true,
@@ -32,7 +32,7 @@ const mockDataCustomers = [
       lastName: "Lannister",
       fullName:"Cersei Lannister",
       enabled: true,
-      phone: [
+      phones: [
         {
           phone: "(665)121-5454",
           enabled: true,
@@ -56,7 +56,7 @@ const mockDataCustomers = [
       lastName: "Lannister",
       fullName:"Jaime Lannister",
       enabled: true,
-      phone: [{
+      phones: [{
         phone: "(665)121-5454",
         enabled: true,
       }],
@@ -70,7 +70,7 @@ const mockDataCustomers = [
       email: "anyastark@gmail.com",
       lastName: "Stark",
       fullName:"Anya Stark",
-      phone: [],
+      phones: [],
       enabled: true,
       profesionals: ["Cersei Lannister", "Anya Stark"],
       nextsAppointments: {

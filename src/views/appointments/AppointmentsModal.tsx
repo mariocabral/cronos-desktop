@@ -27,7 +27,7 @@ import moment, { Moment } from "moment";
 import CustomerAutoComplete, { CustomerItem } from './CustomerAutoComplete';
 import RepeatAutoComplete from './RepeatAutoComplete';
 import ProfesionalAutoComplete, { ProfesionalItem } from './ProfesionalAutoComplete';
-import HealtCareAutoComplete, { HealtCareItem } from './HealtCareAutoComplete';
+import HealthcareAutoComplete, { HealthcareItem } from './HealthcareAutoComplete';
 import RoomsAutoComplete, { RoomsItem } from './RoomsAutoComplete';
 
 
@@ -48,8 +48,8 @@ const AppointmentsModal: React.FC = () => {
     customerName: '',
     roomId: '',
     roomName: '',
-    healtcareId: '',
-    healtcareName: '',
+    healthcareId: '',
+    healthcareName: '',
     appointmentStart: start,
     appointmentEnd: end,
     enabled: true
@@ -58,7 +58,7 @@ const AppointmentsModal: React.FC = () => {
   const [showSaveButton, setShowSaveButton] = React.useState(showMode);
   var value = createEmptyValue();
   var customerItem: CustomerItem | null = null;
-  var healtCareItem: HealtCareItem | null = null;
+  var healthcareItem: HealthcareItem | null = null;
   var profesionalItem: ProfesionalItem | null = null;
   var roomItem: RoomsItem | null = null;
   if (showMode && appointmentState.currentAppointement) {
@@ -69,9 +69,9 @@ const AppointmentsModal: React.FC = () => {
       name: currentAppointement.customerName ?? '',
       id: currentAppointement.customerId ?? ''
     };
-    healtCareItem = {
-      name: currentAppointement.healtcareName ?? '',
-      id: currentAppointement.healtcareId ?? ''
+    healthcareItem = {
+      name: currentAppointement.healthcareName ?? '',
+      id: currentAppointement.healthcareId ?? ''
     };
     profesionalItem = {
       name: currentAppointement.profesionalName ?? '',
@@ -133,9 +133,9 @@ const AppointmentsModal: React.FC = () => {
     setShowSaveButton(false);
   }
 
-  const updateHealtCare = (newValue: HealtCareItem | null) => {
-    currentAppointement.healtcareName = newValue ? newValue.name : null;
-    currentAppointement.healtcareId = newValue ? newValue.id : null;
+  const updateHealthcare = (newValue: HealthcareItem | null) => {
+    currentAppointement.healthcareName = newValue ? newValue.name : null;
+    currentAppointement.healthcareId = newValue ? newValue.id : null;
     setShowSaveButton(false);
   }
 
@@ -243,7 +243,7 @@ const AppointmentsModal: React.FC = () => {
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
               <HealthAndSafetyOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-              <HealtCareAutoComplete onChange={updateHealtCare} value={healtCareItem}></HealtCareAutoComplete>
+              <HealthcareAutoComplete onChange={updateHealthcare} value={healthcareItem}></HealthcareAutoComplete>
             </Box>
             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
               <MeetingRoomOutlinedIcon sx={{ color: 'action.active', mr: 1, my: 0.5 }} />

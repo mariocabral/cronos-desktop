@@ -11,7 +11,7 @@ const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 const ProfesionalsView = React.lazy(() => import('./views/profesionals/ProfesionalsView'))
 const RoomsView = React.lazy(() => import('./views/rooms/RoomsView'))
 const CustomersView = React.lazy(() => import('./views/customers/CustomersView'))
-const Healtcare = React.lazy(() => import('./views/healtcare/Healtcare'))
+const HealthcareView = React.lazy(() => import('./views/healtcare/HealthcareView'))
 const AppointmentsView = React.lazy(() => import('./views/appointments/AppointmentsView'))
 
 
@@ -83,10 +83,10 @@ export const navegationItems: Array<NavigationRouteItem> = [
 
   {
     type: ComponentItemType.access,
-    title:"sidebar.admin.healtcare",
-    name: "healtcare",
-    path:"/healtcare",
+    title:"sidebar.admin.healthcare",
+    name: "healthcare",
+    path:"/healthcare",
     icon:<MedicalInformationOutlinedIcon/>,
-    element: Healtcare 
+    element: HealthcareView 
   },
 ];

@@ -10,8 +10,8 @@ export interface Appointement {
   customerName: string | null;
   roomId: string | null;
   roomName: string | null;
-  healtcareId: string | null;
-  healtcareName: string | null;
+  healthcareId: string | null;
+  healthcareName: string | null;
   notes?: string;
   appointmentStart: Date;
   appointmentEnd: Date;

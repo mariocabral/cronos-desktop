@@ -17,8 +17,8 @@ pub struct Appointement {
     pub customer_name: Option<String>,
     pub room_id: Option<String>,
     pub room_name: Option<String>,
-    pub healtcare_id: Option<String>,
-    pub healtcare_name: Option<String>,
+    pub healthcare_id: Option<String>,
+    pub healthcare_name: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub notes: Option<String>,
     #[ts(type = "Date")]
