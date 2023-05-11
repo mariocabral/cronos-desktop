@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from "react-i18next";
-import { Box, useTheme, Card, CardContent, Stack, Button, Paper, Divider } from "@mui/material";
+import { Box, useTheme, Card, CardContent, Stack, Button, Paper } from "@mui/material";
 import { tokens, ThemeContextType } from '../../theme';
 import { DataGrid, GridActionsCellItem, GridToolbar, GridColumns, GridRowId } from "@mui/x-data-grid";
 import Header from '../../components/Header';
@@ -126,7 +126,7 @@ const ProfesionalsView: React.FC = () => {
       <Box justifyContent="space-between" alignItems="center" >
         <Box
           m="40px 0 0 0"
-          height="75vh"
+          height="55vh"
           mt={2}
           sx={{
             "& .MuiDataGrid-root": {

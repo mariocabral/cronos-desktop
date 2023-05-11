@@ -5,6 +5,7 @@ import profesionalReducer from './reducers/profesionalReducer';
 import appointmentReducer from './reducers/appointmentReducer';
 import roomsReducer from './reducers/roomsReducer';
 import customerReducer from './reducers/customerReducer';
+import healthcareReducer from './reducers/healthcareReducer';
 
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     appointment: appointmentReducer,
     rooms: roomsReducer,
     customer: customerReducer,
+    healthcare: healthcareReducer,
   },
   middleware: [thunk, logger],
 })

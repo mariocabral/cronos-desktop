@@ -8,6 +8,8 @@ import mockDataAppointments from './appointments';
 import mockDataProfesionals from './profesional';
 import mockDataRooms from './rooms';
 import mockDataCustomers from './customers';
+import mockDataHealthcare from './healthcare';
+import { updateHealthcaresList } from '../state/reducers/healthcareReducer';
 
 
 
@@ -29,4 +31,9 @@ export const loadRoomsMocks = () => {
 export const loadCustomerMocks = () => {
     const dispatch = useAppDispatch();
     dispatch(updateCustomerList(mockDataCustomers));
+};
+
+export const loadHealthcareMocks = () => {
+    const dispatch = useAppDispatch();
+    dispatch(updateHealthcaresList(mockDataHealthcare));
 };

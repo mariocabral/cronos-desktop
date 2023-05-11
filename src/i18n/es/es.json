@@ -169,7 +169,16 @@
 				"profesionals": "Profesionales",
 				"phone": "Telefonos",
 				"email": "Correo electronico",
-				"customers": "Pacientes"
+				"customers": "Pacientes",
+				"action": {
+					"add": "Nuevo",
+					"delete": "Eliminar",
+					"edit": "Editar"
+				}
+			},
+			"stats":{
+				"totals": "Totales",
+				"healthcare": "Mutuales"
 			},
 			"modal": {
 				"title": {

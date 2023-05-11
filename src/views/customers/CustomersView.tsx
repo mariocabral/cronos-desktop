@@ -125,7 +125,7 @@ const CustomersView: React.FC = () => {
       <Box justifyContent="space-between" alignItems="center" >
           <Box
         m="40px 0 0 0"
-        height="75vh"
+        height="55vh"
         mt={2}
         sx={{
           "& .MuiDataGrid-root": {
